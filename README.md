@@ -1,5 +1,5 @@
 * Nombre: Matias Casiba
-* Link GitHub:
+* Link GitHub: https://github.com/MatiCasiba/desafio-14-react
 * Link Netlify:
 
 # Desafio 14 - REACT
@@ -40,4 +40,46 @@ const App = () => {
 
 export default App
 
+```
+
+## LikeButton
+Se creó un componente LikeButton, este es un botón y va a cambiar entre like y unlike cuando se haga click en el. Para poder lograr dicho objetivo, lo trabajé del siguiente modo:
+```sh
+import { useState } from "react";
+
+const LikeButton = () => {
+  const [isActive, setIsActive] = useState(true);
+
+  const like = () => {
+    setIsActive(!isActive); # false
+  };
+
+  return (
+    <div className="text-center"> # centro el botón
+      <button
+        className={`p-2 rounded-md shadow-lg text-white font-bold border cursor-pointer 
+          ${isActive ? "bg-blue-400 border-blue-800" : "bg-red-500 border-red-800"}`}
+        onClick={like}
+      >
+        {isActive ? "Like" : "Unlike"}
+      </button>
+    </div>
+  );
+};
+
+export default LikeButton;
+```
+* Para cumplir con lo pedido, como verás, trabajé con un renderizado condicional, con esto muestro contenido diferente dependiendo del estado o alguna condición
+* Importe el useState
+* isActive -> es el estado | setIsActive -> es la función que modifica el estado
+* Lo que eh trabajado en este código es la modificación de bordes y color de fondo y el texto del botón, utilicé una condicional con tailwind, que es la que se va a encargar de modificar los colores, esa condicional se va a encontrar dentro del className:
+```sh
+      <button
+        className={`p-2 rounded-md shadow-lg text-white font-bold border cursor-pointer
+          ${isActive ? "bg-blue-400 border-blue-800" : "bg-red-500 border-red-800"}`}
+        onClick={like}
+        # el botón estará en azul y cuando se haga click en el, se cambiará al color rojo
+      >
+        {isActive ? "Like" : "Unlike"} # esto me sirve para cambiar el texto, si se encuentra en like, cuando se seleccione el boton, pasará a decir "Unlike"
+      </button>
 ```
