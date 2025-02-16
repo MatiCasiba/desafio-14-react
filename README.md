@@ -83,3 +83,46 @@ export default LikeButton;
         {isActive ? "Like" : "Unlike"} # esto me sirve para cambiar el texto, si se encuentra en like, cuando se seleccione el boton, pasará a decir "Unlike"
       </button>
 ```
+
+## Poducto
+En este componente habrá un producto con su nombre y descripción, al principio no verás la descripción, pero cuando selecciones "ver más", verás la descripción del producto. Para poder lograr que funcione esto, utilicé un useState, te mostraré como lo eh hecho:
+```sh
+import { useState } from "react"
+
+const Producto = ({nombre, descripcion}) => {
+  const [isActive, setIsActive] = useState(true)
+
+  const ocultar = () =>{
+    setIsActive(!isActive) # false
+  }
+
+  return (
+    <div className="my-10 max-w-sm m-auto shadow-lg p-5 border rounded-2xl">
+        <h2 className="mb-2 font-bold text-2xl">{nombre}</h2>
+        {
+            isActive ? (<p>...</p>) : (<p>{descripcion}</p>)
+            # primero no mostrará nada y cuando selecciones ver más, te mostrará la descripcion
+        }
+        <button
+            className="cursor-pointer text-blue-400" 
+            onClick={ocultar} # utilizo el evento para que pueda funcionar el ocultamiento de la descripción
+        >
+            {isActive ? 'Ver más': 'Ver menos'}
+            # cambiará el texto del botón segun la accion que hagas, al inicio mostrará ver mas, pero cuando hagas click en el, se pondrá "ver menos"
+        </button>
+        
+    </div>
+  )
+}
+
+export default Producto
+```
+* Habrá dos props que se parasá su info en el App.jsx:
+```sh
+      <Producto 
+        nombre="Sony Playstation 5 Slim 1tb" 
+        descripcion="La consola PS5 Slim libera nuevas posibilidades de juego. Experimenta una carga ultrarrápida con un SSD de velocidad ultra alta, una inmersión más profunda con soporte para retroalimentación háptica, disparadores adaptativos y audio 3D.2" 
+      />
+```
+Esta info lo contendrá las props que se encuentra entre llaves en el componente Producto.jsx, ejemplo: <h2>{nombre}</h2>
+* Trabajé con el renderizado condicional para que funcione
