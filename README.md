@@ -126,3 +126,18 @@ export default Producto
 ```
 Esta info lo contendrá las props que se encuentra entre llaves en el componente Producto.jsx, ejemplo: <h2>{nombre}</h2>
 * Trabajé con el renderizado condicional para que funcione
+
+### Estilo el boton
+El boton de ver mas y ver menos, tendrá un decorado, habrá una linea debajo del texto cuando te pares sobre este:
+```sh
+        <button
+            className="cursor-pointer text-blue-400 p-1.5 hover:underline" 
+            onClick={ocultar}
+        >
+            {isActive ? 'Ver más': 'Ver menos'} 
+        </button>
+```
+* hover:underline será el causante de este
+* cursour-pointer -> cuando te pares sobre este boton, verás que se convierte en una pequeña mano señalando
+* Una cosa a destacar, no verás un boton como los botones que conoces, sino que utilicé el elemento button, solamente verás el texto sin un recuadro
+* p-1.5 -> es el relleno del elemento button

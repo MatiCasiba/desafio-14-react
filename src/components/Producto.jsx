@@ -14,7 +14,7 @@ const Producto = ({nombre, descripcion}) => {
             isActive ? (<p>...</p>) : (<p>{descripcion}</p>)
         }
         <button
-            className="cursor-pointer text-blue-400" 
+            className="cursor-pointer text-blue-400 p-1.5 hover:underline" 
             onClick={ocultar}
         >
             {isActive ? 'Ver más': 'Ver menos'} 
