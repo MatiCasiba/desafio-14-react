@@ -1,6 +1,6 @@
 * Nombre: Matias Casiba
 * Link GitHub: https://github.com/MatiCasiba/desafio-14-react
-* Link Netlify:
+* Link Netlify: https://desafio-14-react.netlify.app/
 
 # Desafio 14 - REACT
 
@@ -178,3 +178,21 @@ export default Contador
 ```sh
 <Contador inicioConteo={1} limite={10} />
 ```
+
+### Modificacion y estilizando el componente contador
+Ahora el incremento en pantalla estará en un elemento aparte, lo verás al contador en el elemento p, fuera del button. Para tener esto dos elementos, los tuve que encerrar en un div:
+```sh
+    <div className="flex items-center justify-center">
+        <button 
+            className="cursor-pointer bg-gray-200 border shadow-2xl p-2 rounded-2xl tracking-widest" 
+            onClick={incrementar}
+            disabled={contador >= limite}
+        >
+            Incrementar
+        </button>
+        <p className="font-bold ml-3.5">: {contador}</p>
+    </div>
+```
+* para que el boton y elemento p se encuentren en una misma línea horizontal, use un display: flex. Para centrarlos usé el items-center (como veia que el elemento p no estaba correctamente alineado, esto me permite centrarlo verticalmente) y justify-center (para centrar horizontalmente a los elementos que contiene este div)
+* el botón tendrá un color de fondo, sombra, relleno, un redondeo en las esquinas y espacio entre las letras
+* en el elemento p solo le doy grosor a los números y le doy un poco de espacio en el margen izquierdo, para que no quede tan pegado al elemento button

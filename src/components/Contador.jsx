@@ -9,13 +9,16 @@ const Contador = ({inicioConteo, limite}) => {
     }
   }  
   return (
-    <button 
-        className="cursor-pointer" 
-        onClick={incrementar}
-        disabled={contador >= limite}
-    >
-        Incrementar: {contador}
-    </button>
+    <div className="flex items-center justify-center">
+        <button 
+            className="cursor-pointer bg-gray-200 border shadow-2xl p-2 rounded-2xl tracking-widest" 
+            onClick={incrementar}
+            disabled={contador >= limite}
+        >
+            Incrementar
+        </button>
+        <p className="font-bold ml-3.5">: {contador}</p>
+    </div>
   )
 }
 
