@@ -141,3 +141,40 @@ El boton de ver mas y ver menos, tendrá un decorado, habrá una linea debajo de
 * cursour-pointer -> cuando te pares sobre este boton, verás que se convierte en una pequeña mano señalando
 * Una cosa a destacar, no verás un boton como los botones que conoces, sino que utilicé el elemento button, solamente verás el texto sin un recuadro
 * p-1.5 -> es el relleno del elemento button
+
+## Contador con límite personalizado
+En este componente recibimos un límite máximo como prop, cuando se llega a ese límite, el botón de incrementar se deshabilita.
+* Armado del componente Contador:
+```sh
+import { useState } from "react"
+
+const Contador = ({inicioConteo, limite}) => {
+  const [contador, setContador] = useState(inicioConteo)
+
+  const incrementar = () =>{
+    if (contador < limite){
+        setContador(contador+1)
+    }
+  }  
+  return (
+    <button 
+        className="cursor-pointer" 
+        onClick={incrementar}
+        disabled={contador >= limite}
+    >
+        Incrementar: {contador} # muestro el valor del contador
+    </button>
+  )
+}
+
+export default Contador
+```
+* en contador guardo el valor actual de contador, con el setContador voy a actualizar ese valor
+* useState(inicioConteo) -> inicializo el contador con el valor que recibo el prop de este (será 1)
+* en la función de incrementar, hago que si contador es menor que el limite, que incremente, osea que suma 1 al contador. Cuando el usuario llegue al límite, se dejará de contar
+* disabled={contador >= limite} -> va a cumplir la función de deshabilitar el botón cuando se alcanza el límite del contador
+
+### Props del componente en el App.jsx:
+```sh
+<Contador inicioConteo={1} limite={10} />
+```
